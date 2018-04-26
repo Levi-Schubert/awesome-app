@@ -19,11 +19,19 @@ module.exports = function (grunt) {
                 "./scripts/**/*.js",
                 "!node_modules/**/*.js"
             ]
-        }
+		},
+		browserify: {
+			dist: {
+				files: {
+					"../dist/scripts/bundle.js": ["scripts/**/*.js"]
+				}
+			}
+		}
     });
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks("grunt-contrib-watch");
-    grunt.loadNpmTasks("grunt-eslint");
+	grunt.loadNpmTasks("grunt-eslint");
+	grunt.loadNpmTasks("grunt-browserify");
     // Default task(s).
     grunt.registerTask("default", ["eslint", "watch"]);
 };
